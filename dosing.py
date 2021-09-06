@@ -52,4 +52,4 @@ def output_results(weight, dosage_mg_first_day):
 
 # To be testable:
 if __name__ == '__main__':  
-    dose_amount()
+    dose_amount() #the program driver
