@@ -5,7 +5,7 @@
              type of medical treatment or diagnostics.
 """
 
-# Kind of like the main function (the order you call all funcs)
+# Program Driver (kind of like the main function) (the order you call all funcs)
 def dose_amount():
     diag, w_input = get_user_input()
     wt, dose_1 = calculate_dosage(diag, w_input)
