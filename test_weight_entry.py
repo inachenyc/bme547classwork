@@ -5,8 +5,9 @@ import pytest
     ("22 lb", 10),
     ("50 kg", 50),
     ("22.1 lb", 10),
-    ("35.5 kg", 35.5),
+    ("35.5 kg", 36), # do want to be rounded
     ("22 lbs", 10),
+    ("22 lbS", 10),
     ("too much", False), # test for bad input
     ("22", False), # test for missing unit
     ("22 KG", 22), # capitalize
