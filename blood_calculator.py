@@ -107,7 +107,11 @@ if __name__ == "__main__": #so that it doesn't run if this module is imported ??
 # so REMEMBER: always start script with those two lines!!!
 
 
-
+def check_input(in_string): #check if input length <= 2
+    if len(in_string) < 3:
+        return True
+    else:
+        return False
 
 
 

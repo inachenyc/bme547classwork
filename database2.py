@@ -1,9 +1,36 @@
+class Patient:
+    
+    def __init__(self, input_name, id_no, age):
+        self.name = input_name
+        self.id_no = id_no
+        self.age = age
+        self.tests = []
+        
+    def __repr__(self): #representation
+        return"{}: {}".format(self.id_no, self.name)
+
+def class_work():
+    new_patient = Patient("Ann Ables", 120, 36) #run the class to create a new instance of this class
+    print(new_patient.id_no)
+    print(new_patient.name)
+    x = Patient("Bob Boyles", 24, 33)
+    #x.name = "Bob Boyles" #can assign value to properties of instances
+    print(x.name)
+    print(x)
+
+
+# if use dictionary as database
 def create_database_entry(patient_name, id_no, age):
-    new_patient = [patient_name, id_no, age, []]
+    #new_patient = [patient_name, id_no, age, []]
+    # if use dictionary as database:
+    #new_patient = {"name": patient_name, "id_no": id_no, "age": age, "tests": []}
+    # if use Patient class
+    new_patient = Patient(patient_name, id_no, age)
     return new_patient
+    
 
 def print_database(db):
-    #for patient in db: #patient is a dummy variable here?????
+    #for patient in db: #patient is automatically an object in list
         #print(patient) #printing each patient in one line
         #print(patient[0]) #printing only patient names
     
@@ -25,32 +52,43 @@ def print_database(db):
         #print("{} - {}".format(i, (patient, location)))
 
 
-
 def print_patients_over_age(age, db): #don't forget to take db as input!!!
     for patient in db:
-        if patient[2] > age:
+        #if patient[2] > age:
+        if patient["age"] > age:
             print(patient[0]) #prints patient's name, who is older than age
     
 def get_patient(db, id_no):
-    for patient in db:
-        if patient[1] == id_no:
-            return patient
+    patient = db[id_no]
+    return patient
+    # for patient in db:   #command+1 to comment code block
+    #     #if patient[1] == id_no:
+    #     if patient["id_no"] == id_no: #after changing list to a dictionary
+    #         return patient
 
 def main():
-    db = []
-    x = create_database_entry("Ann Ables", 120, 30)
-    db.append(x)
-    x = create_database_entry("Bob Boyles", 24, 31)
-    db.append(x)
-    x = create_database_entry("Chris Chou", 33, 33)
-    db.append(x)
-    x = create_database_entry("David Dinkins", 14, 34)
-    db.append(x)
     
-    y = db[-1] # [-1] takes you the last entry, review video b/f this
-    print(y)  
-    print(db[1:3]) #index 1 and 2, separated by comma
-    print(db[1][0]) #print Bob's name
+    #db = []
+    db = {} #can create db as a dictionary too!
+    x = create_database_entry("Ann Ables", 120, 30)
+    #db.append(x)
+    db[x["id_no"]] = x # pull out the id_no as the key of dictionary
+    # this step stores the newly created instance to the key of id_no.
+    x = create_database_entry("Bob Boyles", 24, 31)
+    #db.append(x)
+    db[x["id_no"]] = x 
+    x = create_database_entry("Chris Chou", 33, 33)
+    #db.append(x)
+    db[x["id_no"]] = x
+    x = create_database_entry("David Dinkins", 14, 34)
+    #db.append(x)
+    db[x["id_no"]] = x
+    print(db)
+    
+    #y = db[-1] # [-1] takes you the last entry, review video b/f this
+    #print(y)  
+    #print(db[1:3]) #index 1 and 2, separated by comma
+    #print(db[1][0]) #print Bob's name
     
     #print_database(db) #prints all patients, each in one line
     
@@ -61,9 +99,13 @@ def main():
     
     patient_id_tested = 24
     test_done = ("HDL", 65)
+    print(db)
     
     patient = get_patient(db, patient_id_tested)
-    patient[3].append(test_done)
+    #patient[3].append(test_done)
+    #patient["tests"].append(test_done) #if changed from a list to a dictionary
+    patient.test.append(test_done)
+    print(db[24].tests)
     
     print_database(db)
     
