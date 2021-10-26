@@ -1,2 +1,7 @@
 .DS_Store
 my_venv
+.idea
+.idea/codeStyles/
+.idea/bme547classwork.iml
+.idea/.gitignore
+.idea/codeStyles/codeStyleConfig.xml
