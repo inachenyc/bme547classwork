@@ -1,9 +1,16 @@
 from flask import Flask, request, jsonify
+import logging
 
 # Define variable to contain Flask class for server
 app = Flask(__name__)
 # Create database as an empty list
 db = []
+
+
+def initialize_server():
+    logging.basicConfig(filename="health_db_server.log", level=logging.DEBUG)
+    # good to start with some entry in your db, so that you can do some testing
+    add_database_entry("patient one", 1, "O+")
 
 
 @app.route("/", methods=["GET"])
@@ -115,7 +122,7 @@ def add_test():
     patient = find_patient(in_data["id"])
     if patient is False:
         return "PatientID {} not found in database.".format(in_data["id"]), 400
-    add_test_result(in_data)
+    add_test_result(patient, in_data)
     return "Added test to patient id {}".format(in_data["id"]), 200
 
 
@@ -256,4 +263,5 @@ def validate_server_input(in_data, expected_keys):
 
 
 if __name__ == '__main__':
+    initialize_server()  # get your server ready to be used
     app.run()
