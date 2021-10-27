@@ -1,0 +1,12 @@
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [26/Oct/2021 19:57:01] "POST /new_patient HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Oct/2021 19:57:01] "POST /new_patient HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Oct/2021 19:57:01] "[31m[1mPOST /new_patient HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [26/Oct/2021 19:57:01] "[31m[1mPOST /new_patient HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [26/Oct/2021 19:57:01] "POST /add_test HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Oct/2021 19:57:01] "[31m[1mPOST /add_test HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [26/Oct/2021 19:57:01] "GET /get_results/201 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Oct/2021 19:57:01] "[31m[1mGET /get_results/205 HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [26/Oct/2021 19:57:01] "[31m[1mGET /get_results/abc HTTP/1.1[0m" 400 -
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
