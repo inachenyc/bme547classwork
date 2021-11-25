@@ -94,7 +94,7 @@ def test_generate_results():
                "['HDL', 123]\n" \
                "['LDL', 50]\n"
     """Note that even though the data were initially put into the record
-       as tuples, MongoDB stores all "array"-type variables the same and 
+       as tuples, MongoDB stores all "array"-type variables the same and
        they are returned as lists to Python."""
     entry_to_delete.delete()
     assert answer == expected

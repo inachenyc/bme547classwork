@@ -31,7 +31,7 @@ def initialize_server():
     # good to start with some entry in your db, so that you can do some testing
     # add_database_entry("patient one", 1, "O+")
     print("Connecting to MongoDB...")
-    connect("mongodb+srv://<userid>:<pswd>@bme547.ba348.mongodb.net/health_db"
+    connect("mongodb+srv://inachen:547psw@bme547.h3dpp.mongodb.net/health_db"
             "?retryWrites=true&w=majority")
     print("Connection attempt finished.")
 
@@ -129,9 +129,9 @@ def validate_server_input(in_data, expected_keys):
 # def add_database_entry(patient_name, id_no, blood_type):
 #     """Creates new patient database entry
 #
-#     This function receives information about the patient, creates a dictionary,
-#     and appends that dictionary to the database list.  The patient dictionary
-#     has the following format:
+#     This function receives information about the patient, creates a
+#     dictionary, and appends that dictionary to the database list.
+#     The patient dictionary has the following format:
 #
 #     {"name": str, "id_no": int, "blood_type": str, "tests": list}
 #
@@ -253,7 +253,7 @@ def find_patient(id_no):
         patient = Patient.objects.raw({"_id": id_no}).first()
     except pymodm.errors.DoesNotExist:
         patient = False
-    return patien
+    return patient
 
 
 # def add_test_result(in_data):
@@ -302,11 +302,11 @@ def add_test_result(in_data):
 #
 #     This function implements a GET route with a variable URL.  The desired
 #     patient id number is included as part of the URL.  The function calls a
-#     validation function to ensure that the given id is an integer and that the
+#     validation function to ensure that the given id is an integer and the
 #     patient exists in the database.  If the validation passes, the function
 #     calls a function to retrieve the patient record and returns it to the
-#     caller with a status code of 200.  If the validation fails, an appropriate
-#     message is returned with a status code of 400.
+#     caller with a status code of 200.  If the validation fails, an
+#     appropriate message is returned with a status code of 400.
 #
 #     Args:
 #         patient_id (str): the patient id taken from the variable URL
