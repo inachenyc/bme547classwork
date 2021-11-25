@@ -2,3 +2,5 @@
 my_venv
 .idea
 .idea/bme547classwork.iml
+__pycache__/
+.idea/bme547classwork.iml
