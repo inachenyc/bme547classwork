@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import filedialog, messagebox
-from PIL import Image, ImageTk
+from PIL import Image, ImageTk  # Pillow package is modification from PIL pkg
 
 from health_db_client import add_patient_to_server
 
@@ -21,13 +21,13 @@ def load_and_resize_image(filename):
     Returns:
         Pillow.ImageTk.PhotoImage: a tk-compatible image variable
     """
-    pil_image = Image.open(filename)
+    pil_image = Image.open(filename)  # import image from folder path
     original_size = pil_image.size
-    adj_factor = 0.5
-    new_width = round(original_size[0] * adj_factor)
-    new_height = round(original_size[1] * adj_factor)
+    adj_factor = 0.5  # resize w and h in ratio
+    new_width = round(original_size[0] * adj_factor)  # only int pixels
+    new_height = round(original_size[1] * adj_factor)  # must be int
     resized_image = pil_image.resize((new_width, new_height))
-    tk_image = ImageTk.PhotoImage(resized_image)
+    tk_image = ImageTk.PhotoImage(resized_image)  # convert to Tk image
     return tk_image
 
 
@@ -110,14 +110,18 @@ def design_window():
         returned image is then added to the image_label widget for display
         on the GUI.
         """
-        filename = filedialog.askopenfilename(initialdir="images")
+        filename = filedialog.askopenfilename(initialdir="images")  # choose
         if filename == "":
             messagebox.showinfo("Cancel", "You cancelled the image load")
-            return
-        tk_image = load_and_resize_image(filename)
-        image_label.configure(image=tk_image)
+            return  # stops this func if the user hit cancel
+        tk_image = load_and_resize_image(filename)  # local variable
+        image_label.configure(image=tk_image)  # change img in label widget
         image_label.image = tk_image  # Stores image as part of widget to
         # prevent garbage collection and loss of image
+        # Save the local var as a new label property (name it as .image or
+        # whatever you like), image_label is not local to this function, it's
+        # local to the design_window func, so it won't go away in memory
+        # Otherwise, local vars will be cleared off memory once func ends
 
     root = tk.Tk()
     root.title("Health Database GUI")
@@ -180,9 +184,19 @@ def design_window():
     cancel_button = ttk.Button(root, text="Cancel", command=cancel_cmd)
     cancel_button.grid(column=2, row=6)
 
+    # # import an image file and give it an var name
+    # # (already created /images folder in this directory)
+    # pil_image = Image.open("images/blank_pic.jpeg")
+    # # resize the image using Pillow commands if needed b/f converting
+    # resized_image = pil_image.resize(100, 500)
+    # # convert Pillow image to Tk image to be able to show it
+    # tk_image = ImageTk.PhotoImage(resized_image)
+    # The above can be modularized to the "load_and_resize" function
+
     # Creates a place holder for an image.
     tk_image = load_and_resize_image("images/blank_pic.jpeg")
-    image_label = ttk.Label(root, image=tk_image)
+    # Display on GUI as label widgets
+    image_label = ttk.Label(root, image=tk_image)  # used to be text=..
     image_label.grid(column=0, row=7)
 
     # Creates a button to allow user to change the image
