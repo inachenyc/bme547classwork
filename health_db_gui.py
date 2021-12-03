@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import filedialog, messagebox
-from PIL import Image, ImageTk
+from PIL import Image, ImageTk  # Pillow package is modification from PIL pkg
 
 from health_db_client import add_patient_to_server
 
